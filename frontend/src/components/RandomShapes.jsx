@@ -83,7 +83,7 @@ const RandomShapes = ({ Leader }) => {
             borderBottom: '100px solid green',
             cursor: 'pointer',
           }}
-          onClick={() => handleClick('triangle', 2)}
+          onClick={() => handleClick('triangle', -2)}
         />
       )}
       {squarePosition.show && (
