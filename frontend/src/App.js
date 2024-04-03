@@ -68,6 +68,7 @@ function App() {
       {page === "home" && (
         <div className="home">
           <div className="container">
+            <div className="powerTxt">Power Activity</div>
             <div className="joinTeamTxt">Join a team:</div>
             <div className="leaders">
               <div className="leader emmett" onClick={() => handleLeaderClick("Emmett")}>

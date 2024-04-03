@@ -4,7 +4,7 @@ import { useTimer } from "react-timer-hook";
 import { database } from './firebase';
 import { runTransaction, ref } from 'firebase/database';
 
-function Admin({ expiryTimestamp }) {
+function Admin({ timerValue, expiryTimestamp }) {
     // timer values
     const {
         totalSeconds,
@@ -26,7 +26,7 @@ function Admin({ expiryTimestamp }) {
         resume();
         const scoreRef = ref(database, `/Timer`);
         await runTransaction(scoreRef, (currentTime) => {
-            return 5;
+            return timerValue;
         });
         const emmettRef = ref(database, `/Teams/Emmett`);
         await runTransaction(emmettRef, (currentScore) => {
@@ -55,7 +55,7 @@ function Admin({ expiryTimestamp }) {
         } else {
             const scoreRef = ref(database, `/Timer`);
             runTransaction(scoreRef, (currentTime) => {
-                return 5;
+                return timerValue;
             });
         }
     }, [seconds]);
