@@ -8,44 +8,50 @@ const Leaderboard = () => {
     const [harleyScore, setHarleyScore] = useState(0);
     const [peytonScore, setPeytonScore] = useState(0);
 
-  useEffect(() => {
-    const usersRef = ref(database, '/Teams');
-    const unsubscribe = onValue(usersRef, snapshot => {
-      if (snapshot.exists()) {
-        setEmmettScore(snapshot.val()['Emmett']);
-        setLandenScore(snapshot.val()['Landen']);
-        setHarleyScore(snapshot.val()['Harley']);
-        setPeytonScore(snapshot.val()['Peyton']);
-      } else {
-        console.log("none");
-      }
-    });
+    useEffect(() => {
+        const usersRef = ref(database, '/Teams');
+        const unsubscribe = onValue(usersRef, snapshot => {
+        if (snapshot.exists()) {
+            setEmmettScore(snapshot.val()['Emmett']);
+            setLandenScore(snapshot.val()['Landen']);
+            setHarleyScore(snapshot.val()['Harley']);
+            setPeytonScore(snapshot.val()['Peyton']);
+        } else {
+            console.log("none");
+        }
+        });
 
-    return () => unsubscribe();
-  }, []);
-
-
+        return () => unsubscribe();
+    }, []);
 
     return (
-        <div className="leaderboardPage">
-
-            <div className="titleBoxHolder">
-                <div className="leaderTitleHolder">
+        <div className="leaderboard">
+            <div className="leaderHolder">
+                <div>
+                    <div className={`bar emmett`} style={{ height: `${emmettScore * 1}px` }}></div>
                     <div className="leaderTitle emmettLB">
-                        Emmett
+                        Team<br/>Emmett
                     </div>
+                </div>
+                <div>
+                    <div className={`bar landen`} style={{ height: `${landenScore * 1}px` }}></div>
                     <div className="leaderTitle landenLB">
-                        Landen
+                        Team<br/>Landen
                     </div>
+                </div>
+                <div>
+                    <div className={`bar harley`} style={{ height: `${harleyScore * 1}px` }}></div>
                     <div className="leaderTitle harleyLB">
-                        Harley
+                        Team<br/>Harley
                     </div>
+                </div>
+                <div>
+                    <div className={`bar peyton`} style={{ height: `${peytonScore * 1}px` }}></div>
                     <div className="leaderTitle peytonLB">
-                        Peyton
+                        Team<br/>Peyton
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };

@@ -77,21 +77,19 @@
   transition: .1s;
 }
 
-.leaderboardPage {
+.leaderHolder {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: end;
   height: 100vh;
 }
 
-.titleBoxHolder {
-}
-
-.leaderTitleHolder {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 .leaderTitle {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
+  padding-bottom: 50px;
+  line-height: 44px;
+  text-align: center;
 }
 
 .emmettLB {
@@ -105,4 +103,9 @@
 }
 .peytonLB {
   color: orange;
+}
+
+.bar {
+  width: 100%;
+  margin-bottom: 20px;
 }
