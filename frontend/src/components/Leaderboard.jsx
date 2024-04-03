@@ -52,25 +52,25 @@ const Leaderboard = () => {
             </div>
             <div className="leaderHolder">
                 <div>
-                    <div className={`bar emmett`} style={{ height: `${emmettScore * 1}px` }}></div>
+                    <div className={`bar emmett`} style={{ height: `${emmettScore * 19/40}px` }}></div>
                     <div className="leaderTitle emmettLB">
                         Team<br/>Emmett
                     </div>
                 </div>
                 <div>
-                    <div className={`bar landen`} style={{ height: `${landenScore * 1}px` }}></div>
+                    <div className={`bar landen`} style={{ height: `${landenScore * 19/40}px` }}></div>
                     <div className="leaderTitle landenLB">
                         Team<br/>Landen
                     </div>
                 </div>
                 <div>
-                    <div className={`bar harley`} style={{ height: `${harleyScore * 1}px` }}></div>
+                    <div className={`bar harley`} style={{ height: `${harleyScore * 19/40}px` }}></div>
                     <div className="leaderTitle harleyLB">
                         Team<br/>Harley
                     </div>
                 </div>
                 <div>
-                    <div className={`bar peyton`} style={{ height: `${peytonScore * 1}px` }}></div>
+                    <div className={`bar peyton`} style={{ height: `${peytonScore * 19/40}px` }}></div>
                     <div className="leaderTitle peytonLB">
                         Team<br/>Peyton
                     </div>
