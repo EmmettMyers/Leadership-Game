@@ -5,6 +5,8 @@ import { database } from './firebase';
 import { runTransaction, ref } from 'firebase/database';
 
 function Admin({ timerValue, expiryTimestamp }) {
+    const [startedGame, setStartedGame] = useState(false);
+
     // timer values
     const {
         totalSeconds,
@@ -23,6 +25,8 @@ function Admin({ timerValue, expiryTimestamp }) {
     });
 
     const startGame = async () => {
+        setStartedGame(true);
+        
         resume();
         const scoreRef = ref(database, `/Timer`);
         await runTransaction(scoreRef, (currentTime) => {
@@ -47,12 +51,15 @@ function Admin({ timerValue, expiryTimestamp }) {
     };
 
     useEffect(() => {
-        if (!(minutes == 0 && seconds == 0)){
+        if (startedGame && !(minutes == 0 && seconds == 0)){
             const scoreRef = ref(database, `/Timer`);
             runTransaction(scoreRef, (currentTime) => {
                 return currentTime - 1;
             });
-        } else {
+        }
+        // game done
+        else {
+            setStartedGame(false);
             const scoreRef = ref(database, `/Timer`);
             runTransaction(scoreRef, (currentTime) => {
                 return timerValue;
@@ -66,6 +73,7 @@ function Admin({ timerValue, expiryTimestamp }) {
 
     return (
         <div className="App">
+            <div>* DONT FORGET TO REFRESH WHEN THE GAMES DONE *</div>
             <div onClick={startGame}>Start Game</div>
         </div>
     );

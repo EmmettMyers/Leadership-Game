@@ -13,7 +13,7 @@ const PageRouter = () => {
     <Router>
       <Routes>
         <Route path="/admin" element={ <Admin timerValue={timerLength} expiryTimestamp={playerTime} /> } />
-        <Route path="/" element={ <App /> } />
+        <Route path="/" element={ <App timerValue={timerLength} /> } />
       </Routes>
     </Router>
   );

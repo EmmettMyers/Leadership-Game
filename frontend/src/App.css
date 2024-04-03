@@ -12,6 +12,18 @@
   height: 90vh;
 }
 
+.waiting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
 .powerTxt {
   font-size: 80px;
   padding-bottom: 20px;
@@ -21,9 +33,15 @@
 
 .joinTeamTxt {
   font-size: 50px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   color: rgb(88, 88, 88);
   text-align: center;
+}
+
+.leaderHolderPhone {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
 }
 
 .leaders {
@@ -42,6 +60,31 @@
   margin-right: 4px;
   font-size: 25px;
   color: white;
+}
+
+@media only screen and (max-width: 800px) {
+  .powerTxt {
+    line-height: 85px;
+  }
+  .leaders {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .powerTxt {
+    font-size: 60px;
+    line-height: 65px;
+  }
+  .joinTeamTxt {
+    font-size: 30px;
+  }
+  .leaders {
+    display: block;
+  }
+  .leader {
+    height: 70px;
+  }
 }
 
 .emmett {
@@ -78,6 +121,12 @@
   align-items: center;
   border-radius: 10px;
   color: white;
+}
+
+@media only screen and (max-width: 800px) {
+  .bottomLink {
+    display: none;
+  }
 }
 
 .bottomLink:hover {
@@ -140,6 +189,7 @@
 
 .gameOverTxt {
   font-size: 80px;
+  line-height: 85px;
   font-weight: bold;
 }
 
@@ -147,6 +197,8 @@
   font-size: 50px;
   font-weight: bold;
   color: rgb(206, 177, 10);
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .scoresTxt {
@@ -160,4 +212,42 @@
 .teamEndTxt {
   font-size: 35px;
   font-weight: 700;
+}
+
+.returnHolder {
+  display: flex;
+  justify-content: center;
+}
+
+.returnButton {
+  font-size: 22px;
+  font-weight: 600;
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  padding-bottom: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(182, 182, 182);
+  margin-top: 40px;
+}
+
+.returnButton:hover {
+  filter: brightness(90%);
+  cursor: pointer;
+  transition: .1s;
+}
+
+@media only screen and (max-width: 600px) {
+  .gameOverTxt {
+    font-size: 60px;
+    line-height: 65px;
+  }
+  .winnerTxt {
+    font-size: 40px;
+  }
+  .teamEndTxt {
+    font-size: 30px;
+  }
 }
