@@ -28,7 +28,7 @@ const RandomShapes = ({ Leader }) => {
   };
 
   useEffect(() => {
-    const interval = setInterval(updatePositionsAndShow, 2000); 
+    const interval = setInterval(updatePositionsAndShow, 1500); 
     return () => clearInterval(interval);
   }, []);
 
@@ -97,7 +97,7 @@ const RandomShapes = ({ Leader }) => {
             backgroundColor: 'red',
             cursor: 'pointer',
           }}
-          onClick={() => handleClick('square', 3)}
+          onClick={() => handleClick('square', 2)}
         />
       )}
       {rectanglePosition.show && (
