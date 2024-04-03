@@ -6,44 +6,47 @@ const RandomShapes = ({ Leader }) => {
   const [circlePosition, setCirclePosition] = useState({ top: 50, left: 50, show: true });
   const [trianglePosition, setTrianglePosition] = useState({ top: 150, left: 150, show: true });
   const [squarePosition, setSquarePosition] = useState({ top: 250, left: 250, show: true });
+  const [rectanglePosition, setRectanglePosition] = useState({ top: 350, left: 350, show: true });
 
   const updatePositionsAndShow = () => {
     setCirclePosition({ ...generateRandomPosition(), show: true });
     setTrianglePosition({ ...generateRandomPosition(), show: true });
     setSquarePosition({ ...generateRandomPosition(), show: true });
+    setRectanglePosition({ ...generateRandomPosition(), show: true });
   };
 
   const generateRandomPosition = () => {
     const container = document.getElementById('shapes-container');
     if (container) {
-      const maxTop = container.offsetHeight - 90;
-      const maxLeft = container.offsetWidth - 90;
+      const maxTop = container.offsetHeight - 90; 
+      const maxLeft = container.offsetWidth - 90; 
       const newTop = Math.random() * maxTop;
       const newLeft = Math.random() * maxLeft;
       return { top: newTop, left: newLeft };
     }
-    return { top: 0, left: 0 };
+    return { top: 0, left: 0 }; 
   };
 
   useEffect(() => {
-    const interval = setInterval(updatePositionsAndShow, 1500);
+    const interval = setInterval(updatePositionsAndShow, 2000); 
     return () => clearInterval(interval);
   }, []);
 
   const handleClick = async (shape, pointValue) => {
     const scoreRef = ref(database, `/Teams/${Leader}`);
     await runTransaction(scoreRef, (currentScore) => {
-      if (currentScore === null) {
-        return 1;
-      } else {
-        return currentScore + pointValue;
-      }
-    });
+        if (currentScore === null) {
+          return 1; 
+        } else {
+          return currentScore + pointValue; 
+        }
+      });
 
-    // Hiding the shape
+    // Hiding the shape based on the shape type clicked
     if (shape === 'circle') setCirclePosition(prev => ({ ...prev, show: false }));
     if (shape === 'triangle') setTrianglePosition(prev => ({ ...prev, show: false }));
     if (shape === 'square') setSquarePosition(prev => ({ ...prev, show: false }));
+    if (shape === 'rectangle') setRectanglePosition(prev => ({ ...prev, show: false })); // Hide rectangle
 
     console.log("+", pointValue);
   };
@@ -63,7 +66,6 @@ const RandomShapes = ({ Leader }) => {
             height: '100px',
             borderRadius: '50%',
             backgroundColor: 'blue',
-            display: circlePosition.show ? 'block' : 'none',
           }}
           onClick={() => handleClick('circle', 1)}
         />
@@ -80,7 +82,6 @@ const RandomShapes = ({ Leader }) => {
             borderRight: '50px solid transparent',
             borderBottom: '100px solid green',
             cursor: 'pointer',
-            display: trianglePosition.show ? 'block' : 'none',
           }}
           onClick={() => handleClick('triangle', 2)}
         />
@@ -95,9 +96,22 @@ const RandomShapes = ({ Leader }) => {
             height: '100px',
             backgroundColor: 'red',
             cursor: 'pointer',
-            display: squarePosition.show ? 'block' : 'none',
           }}
           onClick={() => handleClick('square', 3)}
+        />
+      )}
+      {rectanglePosition.show && (
+        <div
+          style={{
+            position: 'absolute',
+            top: `${rectanglePosition.top}px`,
+            left: `${rectanglePosition.left}px`,
+            width: '150px', 
+            height: '50px', 
+            backgroundColor: 'orange',
+            cursor: 'pointer',
+          }}
+          onClick={() => handleClick('rectangle', 4)}
         />
       )}
     </div>
