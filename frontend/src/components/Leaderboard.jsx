@@ -1,31 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { database } from '../firebase';
 import { runTransaction, ref, onValue } from 'firebase/database';
-import { useTimer } from "react-timer-hook";
 
-const Leaderboard = ({ expiryTimestamp }) => {
+const Leaderboard = () => {
     const [emmettScore, setEmmettScore] = useState(0);
     const [landenScore, setLandenScore] = useState(0);
     const [harleyScore, setHarleyScore] = useState(0);
     const [peytonScore, setPeytonScore] = useState(0);
 
-    // timer values
-    const [timerFlipState, setTimerFlipState] = useState(true);
-    const {
-        totalSeconds,
-        seconds,
-        minutes,
-        hours,
-        days,
-        isRunning,
-        start,
-        pause,
-        resume,
-        restart,
-    } = useTimer({
-        expiryTimestamp,
-        onExpire: () => setTimerFlipState(!timerFlipState),
-    });
+    const [seconds, setSeconds] = useState(5);
+    const [minutes, setMinutes] = useState(0);
 
     useEffect(() => {
         const usersRef = ref(database, '/Teams');
@@ -41,7 +25,24 @@ const Leaderboard = ({ expiryTimestamp }) => {
             }
         });
 
-        return () => unsubscribe();
+        const timerRef = ref(database, '/Timer');
+        const timeUpdate = onValue(timerRef, snapshot => {
+            if (snapshot.exists()) {
+                let pulledSeconds = snapshot.val();
+                console.log(pulledSeconds);
+                if (pulledSeconds > 1){
+                    setSeconds(pulledSeconds % 60);
+                    setMinutes(Math.floor(pulledSeconds / 60));
+                }
+            } else {
+                console.log("none");
+            }
+        });
+
+        return () => {
+            unsubscribe();
+            timeUpdate();
+        };
     }, []);
 
     return (
