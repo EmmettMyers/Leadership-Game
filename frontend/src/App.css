@@ -1,38 +1,78 @@
 .App {
+  overflow: hidden;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.joinTeamTxt {
+  font-size: 50px;
+  padding-bottom: 30px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.leaders {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.leader {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-left: 4px;
+  margin-right: 4px;
+  font-size: 25px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.emmett {
+  background: blue;
+}
+.landen {
+  background: red;
+}
+.harley {
+  background: green;
+}
+.peyton {
+  background: orange;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.leader:hover {
+  filter: brightness(90%);
+  cursor: pointer;
+  transition: .1s;
+}
+
+.leaderboardLink {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 20px;
+  width: 150px;
+  height: 40px;
+  background: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.leaderboardLink:hover {
+  filter: brightness(90%);
+  cursor: pointer;
+  transition: .1s;
+}
+
+.leaderboard {
+
 }
