@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { database } from '../firebase';
+import { runTransaction, ref } from 'firebase/database';
 
-const RandomShapes = () => {
+const RandomShapes = ({Leader}) => {
   const [circlePosition, setCirclePosition] = useState({ top: 50, left: 50 });
   const [trianglePosition, setTrianglePosition] = useState({ top: 150, left: 150 });
   const [squarePosition, setSquarePosition] = useState({ top: 250, left: 250 });
@@ -28,10 +30,17 @@ const RandomShapes = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleClick = (pointValue) => {
-    //todo
+  const handleClick = async (pointValue) => {
+    const scoreRef = ref(database, `/${Leader}`);
+    await runTransaction(scoreRef, (currentScore) => {
+        if (currentScore === null) {
+          return 1; 
+        } else {
+          return currentScore + 1; 
+        }
+      });
     console.log("+", pointValue);
-  }
+    };
 
   return (
     <div
