@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   const [page, setPage] = useState("home");
+  const [leader, setLeader] = useState("leader");
 
   const handleLeaderClick = (leader) => {
     setPage("game");
