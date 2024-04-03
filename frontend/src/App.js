@@ -9,6 +9,7 @@ function App() {
   const [bottomLinkText, setBottomLinkText] = useState("Leaderboard");
 
   const handleLeaderClick = (leader) => {
+    setLeader(leader);
     setPage("game");
   };
 
@@ -48,7 +49,7 @@ function App() {
       )}
 
       {page === "game" && (
-        <RandomShapes />
+        <RandomShapes Leader={leader} />
       )}
 
       {page === "leaderboard" && (
