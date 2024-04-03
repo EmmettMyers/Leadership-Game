@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import './App.css';
+import RandomShapes from "./components/RandomShapes";
+import Leaderboard from "./components/Leaderboard";
 
 function App() {
   const [page, setPage] = useState("home");
   const [leader, setLeader] = useState("leader");
+  const [bottomLinkText, setBottomLinkText] = useState("Leaderboard");
 
   const handleLeaderClick = (leader) => {
     setPage("game");
   };
 
-  const handleLeaderboardClick = () => {
+  const handleBottomLinkClick = () => {
     setPage("leaderboard");
   };
 
@@ -39,18 +42,14 @@ function App() {
       )}
 
       {page === "game" && (
-        <div className="game">
-
-        </div>
+        <RandomShapes />
       )}
 
       {page === "leaderboard" && (
-        <div className="leaderboard">
-
-        </div>
+        <Leaderboard />
       )}
 
-      <div class="leaderboardLink" onClick={handleLeaderboardClick}>Leaderboard</div>
+      <div class="bottomLink" onClick={handleBottomLinkClick}>{bottomLinkText}</div>
     </div>
   );
 }

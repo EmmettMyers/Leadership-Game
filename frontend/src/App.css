@@ -1,5 +1,7 @@
 .App {
   overflow: hidden;
+  background: #f0f0f0;
+  height: 100vh;
 }
 
 .home {
@@ -52,7 +54,7 @@
   transition: .1s;
 }
 
-.leaderboardLink {
+.bottomLink {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -67,7 +69,7 @@
   color: white;
 }
 
-.leaderboardLink:hover {
+.bottomLink:hover {
   filter: brightness(90%);
   cursor: pointer;
   transition: .1s;
