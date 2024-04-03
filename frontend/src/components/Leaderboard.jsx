@@ -1,25 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { database } from '../firebase';
 import { runTransaction, ref, onValue } from 'firebase/database';
+import { useTimer } from "react-timer-hook";
 
-const Leaderboard = () => {
+const Leaderboard = ({ expiryTimestamp }) => {
     const [emmettScore, setEmmettScore] = useState(0);
     const [landenScore, setLandenScore] = useState(0);
     const [harleyScore, setHarleyScore] = useState(0);
     const [peytonScore, setPeytonScore] = useState(0);
 
+    // timer values
+    const [timerFlipState, setTimerFlipState] = useState(true);
+    const {
+        totalSeconds,
+        seconds,
+        minutes,
+        hours,
+        days,
+        isRunning,
+        start,
+        pause,
+        resume,
+        restart,
+    } = useTimer({
+        expiryTimestamp,
+        onExpire: () => setTimerFlipState(!timerFlipState),
+    });
+
     useEffect(() => {
         const usersRef = ref(database, '/Teams');
         const unsubscribe = onValue(usersRef, snapshot => {
-        if (snapshot.exists()) {
-            console.log("test");
-            setEmmettScore(snapshot.val()['Emmett']);
-            setLandenScore(snapshot.val()['Landen']);
-            setHarleyScore(snapshot.val()['Harley']);
-            setPeytonScore(snapshot.val()['Peyton']);
-        } else {
-            console.log("none");
-        }
+            if (snapshot.exists()) {
+                console.log("test");
+                setEmmettScore(snapshot.val()['Emmett']);
+                setLandenScore(snapshot.val()['Landen']);
+                setHarleyScore(snapshot.val()['Harley']);
+                setPeytonScore(snapshot.val()['Peyton']);
+            } else {
+                console.log("none");
+            }
         });
 
         return () => unsubscribe();
@@ -27,6 +46,9 @@ const Leaderboard = () => {
 
     return (
         <div className="leaderboard">
+            <div className="timerHolder">
+                <div className="timer">{minutes} : {seconds < 10 ? `0${seconds}` : seconds}</div>
+            </div>
             <div className="leaderHolder">
                 <div>
                     <div className={`bar emmett`} style={{ height: `${emmettScore * 1}px` }}></div>

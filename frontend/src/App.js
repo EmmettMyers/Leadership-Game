@@ -8,6 +8,11 @@ function App() {
   const [leader, setLeader] = useState("leader");
   const [bottomLinkText, setBottomLinkText] = useState("Leaderboard");
 
+  // timer values
+  const timerLength = 600;
+  const playerTime = new Date();
+  playerTime.setSeconds(playerTime.getSeconds() + timerLength);
+
   const handleLeaderClick = (leader) => {
     setLeader(leader);
     setPage("game");
@@ -53,7 +58,7 @@ function App() {
       )}
 
       {page === "leaderboard" && (
-        <Leaderboard />
+        <Leaderboard expiryTimestamp={playerTime} />
       )}
 
       <div class="bottomLink" onClick={handleBottomLinkClick}>{bottomLinkText}</div>
