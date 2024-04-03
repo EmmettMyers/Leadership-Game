@@ -12,6 +12,7 @@ const Leaderboard = () => {
         const usersRef = ref(database, '/Teams');
         const unsubscribe = onValue(usersRef, snapshot => {
         if (snapshot.exists()) {
+            console.log("test");
             setEmmettScore(snapshot.val()['Emmett']);
             setLandenScore(snapshot.val()['Landen']);
             setHarleyScore(snapshot.val()['Harley']);

@@ -31,12 +31,12 @@ const RandomShapes = ({Leader}) => {
   }, []);
 
   const handleClick = async (pointValue) => {
-    const scoreRef = ref(database, `/${Leader}`);
+    const scoreRef = ref(database, `/Teams/${Leader}`);
     await runTransaction(scoreRef, (currentScore) => {
         if (currentScore === null) {
           return 1; 
         } else {
-          return currentScore + 1; 
+          return currentScore + pointValue; 
         }
       });
     console.log("+", pointValue);
