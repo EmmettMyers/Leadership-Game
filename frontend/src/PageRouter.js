@@ -5,7 +5,7 @@ import Admin from './Admin';
 
 const PageRouter = () => {
   // timer values
-  const timerLength = 15;
+  const timerLength = 60;
   const playerTime = new Date();
   playerTime.setSeconds(playerTime.getSeconds() + timerLength);
 
