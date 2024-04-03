@@ -59,8 +59,10 @@
   bottom: 20px;
   left: 20px;
   font-size: 20px;
-  width: 150px;
-  height: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   background: gray;
   display: flex;
   justify-content: center;
@@ -75,6 +77,32 @@
   transition: .1s;
 }
 
-.leaderboard {
+.leaderboardPage {
+  height: 100vh;
+}
 
+.titleBoxHolder {
+}
+
+.leaderTitleHolder {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.leaderTitle {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.emmettLB {
+  color: blue;
+}
+.landenLB {
+  color: red;
+}
+.harleyLB {
+  color: green;
+}
+.peytonLB {
+  color: orange;
 }

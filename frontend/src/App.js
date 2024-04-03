@@ -13,7 +13,13 @@ function App() {
   };
 
   const handleBottomLinkClick = () => {
-    setPage("leaderboard");
+    if (page == "leaderboard"){
+      setPage("home");
+      setBottomLinkText("Leaderboard");
+    } else {
+      setPage("leaderboard");
+      setBottomLinkText("Home");
+    }
   };
 
   return (
