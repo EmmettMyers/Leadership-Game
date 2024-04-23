@@ -5,11 +5,11 @@
 <br/>
 <div>
   <img src="frontend/public/leadership1.png" style="width: 500px"/>
-  <img src="frontend/public/leadership3.png" style="width: 200px"/>
+  <img src="frontend/public/leadership3.png" style="width: 218px"/>
 </div>
 <div>
   <img src="frontend/public/leadership2.png" style="width: 500px"/>
-  <img src="frontend/public/leadership4.png" style="width: 200px"/>
+  <img src="frontend/public/leadership4.png" style="width: 204px"/>
 </div>
 <br/>
 
