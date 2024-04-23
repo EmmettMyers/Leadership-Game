@@ -1,1 +1,1 @@
-# LeadershipGame
+# Leadership Game
