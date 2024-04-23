@@ -73,7 +73,6 @@ function Admin({ timerValue, expiryTimestamp }) {
 
     return (
         <div className="App">
-            <div>* DONT FORGET TO REFRESH WHEN THE GAMES DONE *</div>
             <div onClick={startGame}>Start Game</div>
         </div>
     );
