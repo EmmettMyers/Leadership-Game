@@ -1,4 +1,4 @@
-# Leadership Game
+# Power Activity - Raikes Leadership II
 
 [Live Demo](https://leadership-game-2fc66.web.app/)&nbsp;&nbsp;|&nbsp;&nbsp;<i>Created: Spring 2024 (College Sophomore)</i>
 
